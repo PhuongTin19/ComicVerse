@@ -29,7 +29,11 @@
                     @csrf
                     <div class="form-group mt-3">
                       <label for="exampleInputEmail1">Name</label> 
-                      <input type="text" name="name" class="form-control" value="{{old('name')}}" id="exampleInputName" aria-describedby="nameHelp" placeholder="Name">
+                      <input type="text" name="name" class="form-control" value="{{old('name')}}" onkeyup="ChangeToSlug()" id="slug" aria-describedby="nameHelp" placeholder="Name">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="exampleInputEmail1">Slug</label> 
+                        <input type="text" name="slug_category" class="form-control" value="{{old('slug_category')}}" id="convert_slug" aria-describedby="nameHelp" placeholder="Name">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputDescription">Description</label>

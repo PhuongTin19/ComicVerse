@@ -33,19 +33,23 @@ class CategoryController extends Controller
         $data = $request->validate(
             [
                 'name' => 'required|unique:category|max:255',
+                'slug_category' => 'required|unique:category|max:255',
                 'description' => 'required|max:255',
                 'status' => 'required'
             ]
             ,
             [
                 'name.unique' => 'name is exists, please enter another name',
-                'name.required' => 'The name field is required.'
+                'slug_category.unique' => 'slug is exists, please enter another slug',
+                'name.required' => 'The name field is required.',
+                'description.required' => 'The description field is required.'
             ]
         );
         // $data = $request->all();
         $category = new Category();
         $category->name = $data['name']; 
         $category->description = $data['description']; 
+        $category->slug_category = $data['slug_category'];
         $category->status = $data['status']; 
         $category->save();
         return redirect()->back()->with('message','add successfully');
@@ -76,18 +80,22 @@ class CategoryController extends Controller
         $data = $request->validate(
             [
                 'name' => 'required|max:255',
+                'slug_category' => 'required|max:255',
                 'description' => 'required|max:255',
                 'status' => 'required'
             ]
             ,
             [
-                'name.required' => 'The name field is required.'
+                'name.required' => 'The name field is required.',
+                'slug_category.required' => 'slug is required',
+                'description.required' => 'The description field is required.'
             ]
         );
         // $data = $request->all();
         $category = Category::find($id);
         $category->name = $data['name']; 
         $category->description = $data['description']; 
+        $category->slug_category = $data['slug_category'];
         $category->status = $data['status']; 
         $category->save();
         return redirect()->back()->with('message','update successfully');

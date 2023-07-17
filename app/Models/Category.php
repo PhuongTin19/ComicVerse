@@ -11,7 +11,7 @@ class Category extends Model
 
     public $timestamps = false;
     protected $fillable = [
-        'name', 'description', 'status'
+        'name', 'description', 'status','slug_category'
     ];
     // If primary key in database is id, then no need to define
     // protected $primarykey = 'id';
