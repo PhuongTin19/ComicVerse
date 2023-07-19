@@ -38,7 +38,7 @@
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a href="./index.html">
-                            <img src="img/logo.png" alt="">
+                            <img src="../img/logo.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -86,30 +86,6 @@
     </header>
     <!-- Header End -->
 
-    <!-- Hero Section Begin -->
-    <section class="hero" >
-        <div class="container">
-            <div class="hero__slider owl-carousel">
-                @foreach ($slidecomic as $key => $item)
-                <div class="hero__items set-bg"  data-setbg="public/uploads/comic/{{$item -> image}}">
-                    {{-- <img src="public/uploads/comic/{{$item -> image}}" alt="" height="500" width="100"> --}}
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label">{{$item -> categorycomic -> name}}</div>
-                                <h2>{{$item -> name}}</h2>
-                                <p>{{$item -> description}}...</p>
-                                <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
-
     <!-- Product Section Begin -->
     <section class="product spad">
         <div class="container">
@@ -119,7 +95,7 @@
                         <div class="row">
                             <div class="col-lg-8 col-md-8 col-sm-8">
                                 <div class="section-title">
-                                    <h4>Trending Now</h4>
+                                    <h4>{{$comics->name}}</h4>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
@@ -129,95 +105,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            @foreach ($comicstrending as $key => $item)
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="public/uploads/comic/{{$item -> image}}">
-                                        <div class="ep">{{$item -> chapter_count}} / ?</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i>{{$item ->view}}</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>{{$item->categorycomic->name}}</li>
-                                        </ul>
-                                        {{-- <h5><a href="{{url('viewcomic/'.$item->slug_comic)}}">{{$item -> name}}</a></h5> --}}
-                                        <h5><a href="{{url('detail/'.$item->slug_comic)}}">{{$item -> name}}</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="popular__product">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-8">
-                                <div class="section-title">
-                                    <h4>Popular Shows</h4>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="btn__all">
-                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            @foreach ($comicsview as $key => $item)
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="public/uploads/comic/{{$item -> image}}">
-                                        <div class="ep">{{$item -> chapter_count}} / ?</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i>{{$item ->view}}</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>{{$item->categorycomic->name}}</li>
-                                        </ul>
-                                        {{-- <h5><a href="{{url('viewcomic/'.$item->slug_comic)}}">{{$item -> name}}</a></h5> --}}
-                                        <h5><a href="{{url('detail/'.$item->slug_comic)}}">{{$item -> name}}</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="recent__product">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-8">
-                                <div class="section-title">
-                                    <h4>Recently Added Shows</h4>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="btn__all">
-                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            @foreach ($comicsrecently as $key => $item)
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="public/uploads/comic/{{$item -> image}}">
-                                        <div class="ep">{{$item -> chapter_count}} / ?</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i>{{$item ->view}}</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>{{$item->categorycomic->name}}</li>
-                                        </ul>
-                                        {{-- <h5><a href="{{url('viewcomic/'.$item->slug_comic)}}">{{$item -> name}}</a></h5> --}}
-                                        <h5><a href="{{url('detail/'.$item->slug_comic)}}">{{$item -> name}}</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -235,33 +122,33 @@
                             </ul>
                             <div class="filter__gallery">
                                 <div class="product__sidebar__view__item set-bg asset day years"
-                                data-setbg="img/sidebar/tv-1.jpg">
+                                data-setbg="../img/sidebar/tv-1.jpg">
                                 <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i>{{$item ->view}}</div>
+                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
                                 <h5><a href="#">Boruto: Naruto next generations</a></h5>
                             </div>
                             <div class="product__sidebar__view__item set-bg asset month week"
-                            data-setbg="img/sidebar/tv-2.jpg">
+                            data-setbg="../img/sidebar/tv-2.jpg">
                             <div class="ep">18 / ?</div>
-                            <div class="view"><i class="fa fa-eye"></i>{{$item ->view}}</div>
+                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
                             <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
                         </div>
                         <div class="product__sidebar__view__item set-bg asset week years"
-                        data-setbg="img/sidebar/tv-3.jpg">
+                        data-setbg="../img/sidebar/tv-3.jpg">
                         <div class="ep">18 / ?</div>
-                        <div class="view"><i class="fa fa-eye"></i>{{$item ->view}}</div>
+                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
                         <h5><a href="#">Sword art online alicization war of underworld</a></h5>
                     </div>
                     <div class="product__sidebar__view__item set-bg asset years month"
-                    data-setbg="img/sidebar/tv-4.jpg">
+                    data-setbg="../img/sidebar/tv-4.jpg">
                     <div class="ep">18 / ?</div>
-                    <div class="view"><i class="fa fa-eye"></i>{{$item ->view}}</div>
+                    <div class="view"><i class="fa fa-eye"></i> 9141</div>
                     <h5><a href="#">Fate/stay night: Heaven's Feel I. presage flower</a></h5>
                 </div>
                 <div class="product__sidebar__view__item set-bg asset day"
-                data-setbg="img/sidebar/tv-5.jpg">
+                data-setbg="../img/sidebar/tv-5.jpg">
                 <div class="ep">18 / ?</div>
-                <div class="view"><i class="fa fa-eye"></i>{{$item ->view}}</div>
+                <div class="view"><i class="fa fa-eye"></i> 9141</div>
                 <h5><a href="#">Fate stay night unlimited blade works</a></h5>
             </div>
         </div>
@@ -272,7 +159,7 @@
         </div>
         <div class="product__sidebar__comment__item">
             <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-1.jpg" alt="">
+                <img src="../img/sidebar/comment-1.jpg" alt="">
             </div>
             <div class="product__sidebar__comment__item__text">
                 <ul>
@@ -285,7 +172,7 @@
         </div>
         <div class="product__sidebar__comment__item">
             <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-2.jpg" alt="">
+                <img src="../img/sidebar/comment-2.jpg" alt="">
             </div>
             <div class="product__sidebar__comment__item__text">
                 <ul>
@@ -298,7 +185,7 @@
         </div>
         <div class="product__sidebar__comment__item">
             <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-3.jpg" alt="">
+                <img src="../img/sidebar/comment-3.jpg" alt="">
             </div>
             <div class="product__sidebar__comment__item__text">
                 <ul>
@@ -311,7 +198,7 @@
         </div>
         <div class="product__sidebar__comment__item">
             <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-4.jpg" alt="">
+                <img src="../img/sidebar/comment-4.jpg" alt="">
             </div>
             <div class="product__sidebar__comment__item__text">
                 <ul>
@@ -339,7 +226,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="footer__logo">
-                    <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    <a href="./index.html"><img src="../img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -376,7 +263,7 @@
 
 <!-- Js Plugins -->
 
-{{-- <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet"> --}}
+<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 <script src="{{ asset('js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{ asset('js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('js/player.js')}}"></script>

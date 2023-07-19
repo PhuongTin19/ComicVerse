@@ -5,20 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Chapter extends Model
 {
     use HasFactory;
-
     public $timestamps = false;
     protected $fillable = [
-        'name', 'description', 'status','slug_category'
+        'title', 'description', 'status','content','comic_id','slug_chapter'
     ];
     // If primary key in database is id, then no need to define
     // protected $primarykey = 'id';
-    protected $table = 'category';
+    protected $table = 'chapter';
 
-    public function categorycomic(){
-        return $this->hasMany('App\Models\Category');
+    public function comicchapter(){
+        return $this->belongsTo('App\Models\Comic','comic_id','id');
     }
-    
 }

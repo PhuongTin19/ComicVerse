@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 bg-danger">
-                    Add Comic<br>
+                    Add Chapter<br>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger mt-3 ml-3 mr-3">
@@ -25,31 +25,31 @@
                         {{ session('message') }}
                     </div>
                 @endif
-                <form method="POST" action="{{route('comic.store')}}" enctype="multipart/form-data" class="mr-4 ml-4">
+                <form method="POST" action="{{route('chapter.store')}}" class="mr-4 ml-4">
                     @csrf
                     <div class="form-group mt-3">
-                      <label for="exampleInputEmail1">Name</label> 
-                      <input type="text" name="name" class="form-control" value="{{old('name')}}" onkeyup="ChangeToSlug()" id="slug" aria-describedby="nameHelp" placeholder="Name">
+                      <label for="exampleInputEmail1">Title</label> 
+                      <input type="text" name="title" class="form-control" value="{{old('title')}}" onkeyup="ChangeToSlug()" id="slug" aria-describedby="nameHelp" placeholder="Title">
                     </div>
                     <div class="form-group mt-3">
                         <label for="exampleInputEmail1">Slug</label> 
-                        <input type="text" name="slug_comic" class="form-control" value="{{old('slug_comic')}}" id="convert_slug" aria-describedby="nameHelp" placeholder="Name">
+                        <input type="text" name="slug_chapter" class="form-control" value="{{old('slug_chapter')}}" id="convert_slug" aria-describedby="nameHelp">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputDescription">Description</label>
-                      <textarea name="description" class="form-control" rows="5" style="resize:none"></textarea>
+                      <input type="text" name="description" class="form-control" value="{{old('description')}}" id="convert_slug" aria-describedby="nameHelp" placeholder="Description">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputStatus">Category</label>
-                        <select name="category_id" class="custom-select mb-3">
-                            @foreach ($categories as $key => $categories) 
-                            <option value="{{$categories->id}}">{{$categories->name}}</option>
+                        <label for="exampleInputDescription">Content</label>
+                        <textarea name="content" class="form-control" rows="5" style="resize:none"></textarea>
+                      </div>
+                    <div class="form-group">
+                        <label for="exampleInputStatus">Comic</label>
+                        <select name="comic_id" class="custom-select mb-3">
+                            @foreach ($comic as $key => $comic)
+                            <option value="{{$comic->id}}">{{$comic->name}}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="exampleInputEmail1">Image</label> 
-                        <input type="file" name="image" class="form-control-file">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputStatus">Status</label>

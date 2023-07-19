@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\ComicController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Comic;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +19,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layout');
-});
+Route::get('/',[IndexController::class,'home']);
+Route::get('/category/{slug}',[IndexController::class,'category']);
+Route::get('/viewcomic/{slug}',[IndexController::class,'viewComic']);
+Route::get('/detail/{slug}',[IndexController::class,'detail']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,5 +36,8 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('/category', CategoryController::class);
 Route::resource('/comic', ComicController::class);
+Route::resource('/chapter', ChapterController::class);
+
+
 
 require __DIR__.'/auth.php';
