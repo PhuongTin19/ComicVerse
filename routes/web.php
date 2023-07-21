@@ -22,7 +22,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[IndexController::class,'home']);
 Route::get('/category/{slug}',[IndexController::class,'category']);
 Route::get('/viewcomic/{slug}',[IndexController::class,'viewComic']);
+Route::get('/readcomic/{slug}',[IndexController::class,'readComic']);
 Route::get('/detail/{slug}',[IndexController::class,'detail']);
+Route::post('/add-comment', [IndexController::class, 'addComments'])->name('comment.store');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -154,7 +154,7 @@
                             </div>
                             <div class="anime__details__btn">
                                 <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
-                                <a href="#" class="watch-btn"><span>Watch Now</span> <i
+                                <a href="{{url('viewcomic/'.$comics->slug_comic)}}" class="watch-btn"><span>Watch Now</span> <i
                                     class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
@@ -165,72 +165,34 @@
                     <div class="col-lg-8 col-md-8">
                         <div class="anime__details__review">
                             <div class="section-title">
-                                <h5>Reviews</h5>
+                                <h5>Reviews</h5>{{Auth::user()->id}}
                             </div>
+                            @foreach ($comments as $item)
                             <div class="anime__review__item">
                                 <div class="anime__review__item__pic">
-                                    <img src="../img/anime/review-1.jpg" alt="">
+                                    <img src="../public/uploads/comic/{{$comics -> image}}" alt="">
                                 </div>
                                 <div class="anime__review__item__text">
-                                    <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                                    <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                    "demons" LOL</p>
+                                    <h6>Id{{$item -> users_id}} <p>{{ $item -> date}}</p></h6>
+                                    <p>{{$item -> comment}}</p>
                                 </div>
                             </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="../img/anime/review-2.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                                    <p>Finally it came out ages ago</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="../img/anime/review-3.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                                    <p>Where is the episode 15 ? Slow update! Tch</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="../img/anime/review-4.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                                    <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                    "demons" LOL</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="../img/anime/review-5.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                                    <p>Finally it came out ages ago</p>
-                                </div>
-                            </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="../img/anime/review-6.jpg" alt="">
-                                </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                                    <p>Where is the episode 15 ? Slow update! Tch</p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <div class="anime__details__form">
                             <div class="section-title">
                                 <h5>Your Comment</h5>
                             </div>
-                            <form action="#">
-                                <textarea placeholder="Your Comment"></textarea>
+                            <form method="POST" action="{{route('comment.store')}}">
+                                @csrf
+                                <textarea class="text-dark" name="comment" placeholder="Your Comment"></textarea>
+                                <input type="hidden" value="{{$comics->id   }}" name="comic_id" id="">
                                 <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                                @if (session('message'))
+                                <div class="alert alert-success mt-3 ml-3 mr-3">
+                                    {{ session('message') }}
+                                </div>
+                            @endif
                             </form>
                         </div>
                     </div>

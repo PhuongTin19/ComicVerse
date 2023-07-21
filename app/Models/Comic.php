@@ -20,7 +20,11 @@ class Comic extends Model
         return $this->belongsTo('App\Models\Category','category_id','id');
     }
 
+    public function comiccomment(){
+        return $this->hasMany('App\Models\Chapter');
+    }
+
     public function comicchapter(){
-        return $this->hasMany('App\Models\Comic','comic_id','id');
+        return $this->hasMany('App\Models\Comic');
     }
 }

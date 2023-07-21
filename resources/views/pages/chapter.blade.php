@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html">
+                        <a href="/">
                             <img src="../img/logo.png" alt="">
                         </a>
                     </div>
@@ -104,6 +104,9 @@
                                 </div>
                             </div>
                         </div>
+                        @foreach ($chapters as $key => $item)
+                              <a href="{{url('readcomic/'.$comics->slug_comic)}}">{{$item->title}}</a> <br>
+                        @endforeach
                         <div class="row">
                         </div>
                     </div>
@@ -263,7 +266,6 @@
 
 <!-- Js Plugins -->
 
-<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 <script src="{{ asset('js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{ asset('js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('js/player.js')}}"></script>
